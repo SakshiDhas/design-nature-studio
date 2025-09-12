@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Background Image with Centered Text and Transparent Navbar</title>
+<link rel="stylesheet" href="project.css">
+<style>
+body {
+  margin: 0; /* Remove default body margin */
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  /* background-image: url("./images/supereme img/bricks.jpg"); */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column; /* Stack navbar on top of content */
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.navbar {
+  position: relative; /* Needed for positioning within container */
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(162, 239, 126, 0.5); /* Make navbar transparent */
+  /* Optional: Add a subtle backdrop filter for better visibility */
+  /* backdrop-filter: blur(5px); */
+}
+
+.navbar .logo {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.navbar nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  margin-right: 90px;
+}
+
+.navbar nav li {
+  margin-left: 20px;
+}
+
+.navbar nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.container h2 {
+  font-size: 3em;
+  margin-top: 20px; /* Push text to the bottom */
+  margin-bottom: 20px; /* Add some bottom margin */
+  color: black;
+  font-family: "font-size: 24px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif";
+
+}
+
+
+
+.logo img {
+      height: 30px;
+      width: auto;
+      margin:auto;
+  }
+
+  .centre {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    /* align-items: center; Vertically center */
+    /* height: 100vh; /* Make container full viewport height */
+    /* width: 100vw; Make container full viewport width */ 
+  }
+  
+.line-container {
+    width: 22%; /* Or a specific width */
+    height: 2px;
+    background-color: #cccccc8e; /* Color of the line */
+    position: relative; /* For positioning the dot */
+  }
+
+  .line-container::before { /* Use ::before for the dot */
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the dot */
+    width: 10px; /* Diameter of the dot */
+    height: 10px; /* Diameter of the dot */
+    background-color:#93C572; /* Color of the dot */
+    border-radius: 50%; /* Make it a circle */
+  }
+  .line-container {
+   position:absolute;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <nav class="navbar">
+    <a href="#" class="logo"><img src="./images/basic img/logo.png" alt=""></a>
+    <nav>
+      <ul>
+        <li><a href="home page.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="contact us.html">Contact Us</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="adminlogin.html">Admin</a></li>
+      
+      </ul>
+    </nav>
+  </nav>
+  <h2>PROJECTS</h2>
+  <div class="centre"><div class="line-container";></div>
+</div>
+
+<div class="projects-container">
+    <div class="project">
+      <a href="Atlantis.html" style="text-decoration: none;">
+      <img src="./images/Atlantis img/1.jpg" alt="ANP Atlantis_Baner" >
+      <div class="project-title">ANP Atlantis_Baner</div> </a>
+    </div>
+    <div class="project">
+      <a href="Destiny.html" style="text-decoration: none;">
+      <img src="./images/Atlantis img/13.jpg" alt="Destiny Bliss_Pimple Saudagar">
+      <div class="project-title">Destiny Bliss_Pimple Saudagar</div> </a>
+    </div>
+    <div class="project">
+      <a href="kalpataru.html" style="text-decoration: none;">
+      <img src="./images/kalpataru img/3.jpg" alt="Kalpataru Estate_Pimple Gurav">
+      <div class="project-title">Kalpataru Estate_Pimple Gurav</div></a>
+    </div>
+  
+  
+    <div class="project">
+      <a href="pacific.html" style="text-decoration: none;">
+      <img src="./images/yash img/11.jpg" alt="Pacific Millennium_Tathawade">
+      <div class="project-title">Pacific Millennium_Tathawade</div></a>
+    </div>
+    <div class="project">
+      <a href="supereme.html" style="text-decoration: none;">
+      <img src="./images/kalpataru img/5.jpg" alt="Supreme Estia_Baner">
+      <div class="project-title">Supreme Estia_Baner</div></a>
+    </div>
+    <div class="project">
+      <a href="yash.html" style="text-decoration: none;">
+      <img src="./images/yash img/8.jpg" alt="YashOne_Hinjewadi">
+      <div class="project-title">YashOne_Hinjewadi</div></a>
+    </div>
+  </div>
+  
+  
+  
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Form</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    .heading {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .contact-box {
+      display: flex;
+      background: rgb(209, 209, 209);
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 80%;
+      max-width: 900px;
+      padding: 20px;
+      gap: 20px;
+    }
+    .form-container {
+      width: 60%;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .image-container {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 20px;
+    }
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: none;
+      display: block;
+    }
+    label {
+      display: block;
+      margin: 10px 0 3px;
+      font-weight: bold;
+    }
+    label span {
+      color: red;
+    }
+    textarea.input-field {
+      min-height: 100px;
+      max-height: 200px;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 10px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .status-message {
+      margin-top: 10px;
+      font-weight: bold;
+      display: none;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+    @media (max-width: 768px) {
+      .contact-box {
+        flex-direction: column;
+        width: 90%;
+      }
+      .image-container {
+        width: 100%;
+        padding: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="heading">Get Free Consultation</div>
+  <div class="contact-box">
+    <div class="form-container">
+      <h2>Get in Touch</h2>
+      <p>If you have any inquiries, please fill out the form below or email us at  
+        <a href="mailto:sakshidhas24@gmail.com">sakshidhas24@gmail.com</a>
+      </p>
+
+      <!-- ✅ Updated Form -->
+      <form id="contactForm">
+        <label for="name">Your Name <span>*</span></label>
+        <input type="text" name="name" id="name" class="input-field" required>
+
+        <label for="email">Your Email <span>*</span></label>
+        <input type="email" name="email" id="email" class="input-field" required>
+
+        <label for="message">Your Message <span>*</span></label>
+        <textarea name="message" id="message" class="input-field" required></textarea>
+
+        <button type="submit" class="submit-btn">Send Inquiry</button>
+      </form>
+
+      <!-- ✅ Feedback Messages -->
+      <p class="status-message success" id="successMessage">Thank you! Your message has been sent.</p>
+      <p class="status-message error" id="errorMessage">Oops! Something went wrong.</p>
+    </div>
+
+    <div class="image-container">
+      <img src="./images/Contact Us  Image.webp" alt="Contact Image">
+    </div>
+  </div>
+
+  <!-- ✅ JavaScript to Send Data to Spring Boot -->
+  <script>
+    const form = document.getElementById("contactForm");
+    const successMessage = document.getElementById("successMessage");
+    const errorMessage = document.getElementById("errorMessage");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      try {
+        const response = await fetch("http://localhost:8080/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ name, email, message })
+        });
+
+        const result = await response.text();
+
+        if (response.ok) {
+          successMessage.style.display = "block";
+          errorMessage.style.display = "none";
+          form.reset();
+        } else {
+          successMessage.style.display = "none";
+          errorMessage.style.display = "block";
+        }
+      } catch (error) {
+        successMessage.style.display = "none";
+        errorMessage.style.display = "block";
+        console.error("Error:", error);
+      }
+    });
+  </script>
+</body>
+</html>
