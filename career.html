@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Careers Inquiry Form</title>
+  <link rel="stylesheet" href="./home page.css">
+  <link rel="shortcut icon" href="./images/basic img/fevicon.jpeg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 20px;
+    }
+    .heading {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin: 100px 0 20px; /* ✅ shifted down due to navbar */
+    }
+    .container {
+      display: flex;
+      background: rgb(209, 209, 209);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      max-width: 900px;
+      width: 100%;
+      margin-bottom: 50px;
+    }
+    .form-container {
+      flex: 1;
+      padding-right: 20px;
+    }
+    .form-container h2 {
+      margin-bottom: 5px;
+    }
+    .form-container p {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: gray;
+    }
+    .instructions {
+      background: #f1f1f1;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #333;
+    }
+    .instructions ul {
+      padding-left: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group label span {
+      color: red;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .form-group textarea {
+      height: 100px;
+      resize: none;
+    }
+    .submit-btn {
+      width: 100%;
+      background-color: #000;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .submit-btn:hover {
+      background-color: #444;
+    }
+    .image-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .image-container img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .message {
+      margin-top: 10px;
+      font-size: 14px;
+      display: none;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .form-container {
+        padding-right: 0;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Navbar (same as homepage) -->
+  <nav class="navbar">
+    <a href="home page.html" class="logo"><img src="./images/basic img/logo.png" alt="Logo"></a>
+    <nav>
+      <ul>
+        <li><a href="home page.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="career.html" class="active">Career</a></li>
+        <li><a href="adminlogin.html">Admin</a></li>
+      </ul>
+    </nav>
+  </nav>
+
+  <!-- Heading -->
+  <div class="heading">Looking for an Opportunity?</div>
+
+  <div class="container">
+    <!-- FORM -->
+    <div class="form-container">
+      <h2>Work with Us</h2>
+      <p>
+        Are you looking for a job at DesignNature Studio? Please fill out the form below or mail us your Resume at  
+        <a href="mailto:sakshidhas24@gmail.com">sakshidhas24@gmail.com</a>
+      </p>
+
+      <div class="instructions">
+        <strong>Resume Submission Guidelines:</strong>
+        <ul>
+          <li>Resume should be in PDF format.</li>
+          <li>File size should not exceed 2MB.</li>
+        </ul>
+      </div>
+
+      <!-- ✅ UPDATED FORM -->
+      <form id="careerForm" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="name">Name <span>*</span></label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email <span>*</span></label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone <span>*</span></label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+        <div class="form-group">
+          <label for="resume">Upload Resume <span>*</span></label>
+          <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required />
+        </div>
+        <button type="submit" class="submit-btn">Send Inquiry</button>
+
+        <!-- Success / Error messages -->
+        <div class="message success" id="successMessage">Your details were submitted successfully!</div>
+        <div class="message error" id="errorMessage">Something went wrong. Please try again.</div>
+      </form>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="image-container">
+      <img src="./images/career image.jpg" alt="Career Inquiry" />
+    </div>
+  </div>
+
+  <!-- ✅ JS to send form to Spring Boot -->
+  <script>
+    document.getElementById("careerForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("http://localhost:8080/api/career", {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.text();
+
+        if (response.ok) {
+          document.getElementById("successMessage").style.display = "block";
+          document.getElementById("errorMessage").style.display = "none";
+          form.reset();
+        } else {
+          document.getElementById("successMessage").style.display = "none";
+          document.getElementById("errorMessage").style.display = "block";
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        document.getElementById("successMessage").style.display = "none";
+        document.getElementById("errorMessage").style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>
